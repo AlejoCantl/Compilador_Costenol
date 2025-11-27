@@ -35,7 +35,7 @@ class AnalizadorLexico:
         'IGUAL', 'MAS', 'MENOS', 'POR', 'DIVIDIDO',
         'NUMERO_ENTERO', 'NUMERO_REAL', 'IDENTIFICADOR',
         'PARENTESIS_IZQ', 'PARENTESIS_DER',
-        'PUNTO_Y_COMA', 'COMA', 'CADENA_TEXTO', 'PUNTO'
+        'PUNTO_Y_COMA', 'CADENA_TEXTO', 'PUNTO'
     )
     
     # Palabras reservadas
@@ -59,7 +59,6 @@ class AnalizadorLexico:
     t_PARENTESIS_IZQ = r'\('
     t_PARENTESIS_DER = r'\)'
     t_PUNTO_Y_COMA = r';'
-    t_COMA = r','
     t_PUNTO = r'\.'
     
     # Ignorar espacios y tabs
