@@ -108,7 +108,7 @@ entrada = Captura.Entero();
 ## 📁 Estructura del Proyecto
 
 ```
-Compilador/
+Compilador_Costenol/
 │
 ├── main.py           # Punto de entrada de la aplicación
 ├── gui.py            # Interfaz gráfica con Tkinter
