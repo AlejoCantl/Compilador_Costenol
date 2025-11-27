@@ -3,7 +3,7 @@ from lexer import AnalizadorLexico
 from semantic import AnalizadorSemantico
 
 class AnalizadorSintactico:
-    """Parser sintáctico - Aprovecha PLY al máximo con recuperación inteligente"""
+    """Parser sintáctico"""
     
     def __init__(self, lexer, semantico):
         self.lexer_obj = lexer

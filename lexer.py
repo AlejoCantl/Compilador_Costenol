@@ -1,7 +1,7 @@
 import ply.lex as lex
 
 class AnalizadorLexico:
-    """Analizador léxico encapsulado - Aprovecha PLY al máximo"""
+    """Analizador léxico"""
     
     def __init__(self):
         self.errores = []
