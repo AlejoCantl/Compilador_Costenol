@@ -124,7 +124,10 @@ class AnalizadorSintactico:
 
     def p_sentencia_declaracion_operador_inicio(self, p):
         '''sentencia : DIVIDIDO IDENTIFICADOR tipo PUNTO_Y_COMA
-                     | POR IDENTIFICADOR tipo PUNTO_Y_COMA'''
+                     | POR IDENTIFICADOR tipo PUNTO_Y_COMA
+                     | MAS IDENTIFICADOR tipo PUNTO_Y_COMA
+                     | MENOS IDENTIFICADOR tipo PUNTO_Y_COMA
+                     '''
         operador = p[1]
         var = p[2]
         linea = p.lineno(1)
