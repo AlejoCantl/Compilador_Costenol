@@ -141,8 +141,12 @@ class AnalizadorSemantico:
             
             # Verificar si hay errores en los operandos PRIMERO
             if isinstance(izq, tuple) and izq[0] == 'error':
+                if len(izq) > 1 and izq[1] == 'variable_no_definida':
+                     return f"¡Ombe! La variable '{izq[2]}' no existe, no inventes."
                 return 'Error'
             if isinstance(der, tuple) and der[0] == 'error':
+                if len(der) > 1 and der[1] == 'variable_no_definida':
+                     return f"¡Ombe! La variable '{der[2]}' no existe, no inventes."
                 return 'Error'
             
             tipo_izq = self.obtener_tipo_expresion(izq)
