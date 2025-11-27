@@ -121,6 +121,20 @@ class AnalizadorSintactico:
             p[0] = ('declarar', var, tipo_var)
         else:
             p[0] = None
+
+    def p_sentencia_declaracion_operador_inicio(self, p):
+        '''sentencia : DIVIDIDO IDENTIFICADOR tipo PUNTO_Y_COMA
+                     | POR IDENTIFICADOR tipo PUNTO_Y_COMA'''
+        operador = p[1]
+        var = p[2]
+        linea = p.lineno(1)
+        
+        # Construir el nombre completo con el operador
+        nombre_completo = f"{operador}{var}"
+        
+        self.agregar_error(linea, 
+            f"¡Eche tú que ve! Las variables no pueden empezar con simbolos especiales: '{nombre_completo}'")
+        p[0] = None
     
     def p_sentencia_declaracion_sin_punto_coma(self, p):
         'sentencia : IDENTIFICADOR tipo error'

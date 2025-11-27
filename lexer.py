@@ -69,16 +69,6 @@ class AnalizadorLexico:
     
     # IMPORTANTE: El orden importa - las funciones se evalúan antes que los strings
     
-    def t_OPERADOR_PEGADO_A_LETRA(self, t):
-        r'[*/][a-zA-Z_][a-zA-Z0-9_]*'
-        self.errores.append({
-            'tipo': 'error',
-            'linea': t.lineno,
-            'mensaje': f"¡Eche tú que ve! Las variables no pueden empezar con simbolos especiales: '{t.value}'"
-        })
-        # NO retornar token - esto previene que se use como identificador válido
-        t.lexer.skip(len(t.value))
-    
     def t_CARACTER_ESPECIAL_PEGADO_A_LETRA(self, t):
         r'[$@#%&!?~`|\\^<>\[\]{}]+[a-zA-Z_][a-zA-Z0-9_]*'
         self.errores.append({
