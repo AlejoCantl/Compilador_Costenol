@@ -112,8 +112,9 @@ Compilador/
 │
 ├── main.py           # Punto de entrada de la aplicación
 ├── gui.py            # Interfaz gráfica con Tkinter
-├── lexer.py          # Analizador léxico (tokenización)
-├── parser.py         # Analizador sintáctico y semántico
+├── lexer.py          # Analizador léxico
+├── parser.py         # Analizador sintáctico
+├── semantic.py       # Analizador semántico
 ├── requirements.txt  # Dependencias del proyecto
 └── README.md         # Este archivo
 ```
