@@ -127,6 +127,9 @@ class AnalizadorSintactico:
                      | POR IDENTIFICADOR tipo PUNTO_Y_COMA
                      | MAS IDENTIFICADOR tipo PUNTO_Y_COMA
                      | MENOS IDENTIFICADOR tipo PUNTO_Y_COMA
+                     | IGUAL IDENTIFICADOR tipo PUNTO_Y_COMA
+                     | PARENTESIS_IZQ IDENTIFICADOR tipo PUNTO_Y_COMA
+                     | PARENTESIS_DER IDENTIFICADOR tipo PUNTO_Y_COMA
                      '''
         operador = p[1]
         var = p[2]
