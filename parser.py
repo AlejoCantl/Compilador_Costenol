@@ -134,6 +134,7 @@ class AnalizadorSintactico:
         p[0] = None
     
     # ===================== ASIGNACIONES =====================
+    
     def p_sentencia_asignacion(self, p):
         'sentencia : IDENTIFICADOR IGUAL expresion PUNTO_Y_COMA'
         var, expr = p[1], p[3]
@@ -357,6 +358,7 @@ class AnalizadorSintactico:
             # Evitar duplicados de la misma línea
             if linea == self.ultimo_error_linea:
                 # Ya reportamos error en esta línea, solo recuperar
+                # Intentar avanzar hasta punto y coma para sincronizar
                 while True:
                     tok = self.parser.token()
                     if not tok or tok.type == 'PUNTO_Y_COMA':
@@ -382,42 +384,24 @@ class AnalizadorSintactico:
                 if linea not in self.lineas_con_error:
                     self.agregar_error(linea, 
                         "¡Ombe! Falta un paréntesis o está en el lugar equivocado")
-                # Recuperación: buscar punto y coma
-                while True:
-                    tok = self.parser.token()
-                    if not tok or tok.type == 'PUNTO_Y_COMA':
-                        break
-                if tok and tok.type == 'PUNTO_Y_COMA':
-                    self.parser.errok()
-                    return tok
+                # Dejar que PLY descarte el token
+                return None
             
             elif p.type in ['MAS', 'MENOS', 'POR', 'DIVIDIDO']:
                 # Solo reportar si no hay error previo en esta línea
                 if linea not in self.lineas_con_error:
                     self.agregar_error(linea, 
                         f"¡Qué vaina! El operador '{p.value}' no está bien colocado")
-                # CRÍTICO: Recuperación más agresiva para continuar
-                while True:
-                    tok = self.parser.token()
-                    if not tok or tok.type == 'PUNTO_Y_COMA':
-                        break
-                if tok and tok.type == 'PUNTO_Y_COMA':
-                    self.parser.errok()
-                    return tok
+                # Dejar que PLY descarte el token (FIX para 1,75*+2)
+                return None
             
             else:
                 # Solo reportar si no hay error previo en esta línea
                 if linea not in self.lineas_con_error:
                     self.agregar_error(linea, 
                         f"¡Qué vaina! Error de sintaxis con '{p.value}' aquí")
-                # Recuperación
-                while True:
-                    tok = self.parser.token()
-                    if not tok or tok.type == 'PUNTO_Y_COMA':
-                        break
-                if tok and tok.type == 'PUNTO_Y_COMA':
-                    self.parser.errok()
-                    return tok
+                # Dejar que PLY descarte el token
+                return None
         
         else:
             # EOF inesperado
