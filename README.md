@@ -124,7 +124,9 @@ Compilador_Costenol/
 - **`main.py`**: Inicializa la aplicación y crea la ventana principal
 - **`gui.py`**: Implementa la interfaz gráfica con editor de código, consola de resultados y estadísticas
 - **`lexer.py`**: Define los tokens y reglas léxicas del lenguaje
-- **`parser.py`**: Implementa la gramática, reglas sintácticas, tabla de símbolos y validación de tipos
+- **`parser.py`**: Implementa la gramática, reglas sintácticas
+- **`semantic.py`**: Implementa la validación semántica del código y la tabla de símbolos
+- **`requirements.txt`**: Dependencias del proyecto
 
 ## 🎨 Características de la Interfaz
 
